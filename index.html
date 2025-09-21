@@ -1,1 +1,78 @@
-a yuri é gay
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site do Yure</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px #000;
+      animation: piscar 1s infinite;
+    }
+    @keyframes piscar {
+      0% {opacity: 1;}
+      50% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      color: #ff69b4;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: cair 5s linear infinite;
+    }
+    @keyframes cair {
+      0% {transform: translateY(-100vh) rotate(0deg);}
+      100% {transform: translateY(100vh) rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <h1>O Yure é incrível 🎉</h1>
+  <button onclick="soltarConfete()">Clique para festa</button>
+  <script>
+    function criarEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.innerText = ['🎉','✨','😂','💖','🔥'][Math.floor(Math.random()*5)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.animationDuration = (3 + Math.random()*5) + 's';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 8000);
+    }
+    function soltarConfete(){
+      for(let i=0;i<30;i++){
+        setTimeout(criarEmoji, i*200);
+      }
+    }
+    setInterval(criarEmoji, 1000);
+  </script>
+</body>
+</html>
